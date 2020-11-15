@@ -9,13 +9,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 /**
  * Mybatis의 환경 설정 읽고 객체 생성
  */
-//자바의 객체 형태로 만들어 놓은 파일
 public class MybatisConfig {
-
 	private static SqlSessionFactory sqlSessionFactory;
 
 	static {
-		String resource = "mybatis-config.xml"; // Mybatis 환경설정 파일 읽기. src 경로에 저장.
+		String resource = "mybatis-config.xml";
+		// Mybatis 환경설정 파일 읽기. src 경로에 저장.
 
 		try {
 			Reader reader = Resources.getResourceAsReader(resource);

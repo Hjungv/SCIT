@@ -4,9 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 회원정보 처리 SQL -->
+<!--  연결을 하려고 하는 mapper interface의 전체경로를 지정 -->
 <mapper namespace="test.dao.PersonMapper">
 
 	<!-- 회원 정보 저장 -->
+	<!-- id가 유니크 해야함 -->
 	<insert id="insertPerson" parameterType="person">
 		insert into person (
 		num

@@ -7,6 +7,7 @@ import test.vo.Person;
  */
 public interface PersonMapper {
 	// Person객체 저장
+	// DAO에서 여기로 넘어오고 구현은 personMapper.xml 에서 됨
 	public int insertPerson(Person p);
 
 }
