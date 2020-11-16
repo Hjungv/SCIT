@@ -11,6 +11,7 @@ public class Student {
 	private int mat; // 수학점수
 	private double avg; // 평균점수
 
+//	기본생성자 빼먹지 말기, 자동추가 안되니까 꼭 넣기
 	public Student() {
 
 	}
@@ -65,7 +66,6 @@ public class Student {
 	}
 
 	public double getAvg() {
-		avg = (kor + eng + mat) / 3.0;
 		return avg;
 	}
 

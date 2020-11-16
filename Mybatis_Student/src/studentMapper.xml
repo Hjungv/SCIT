@@ -35,6 +35,7 @@
 			,kor
 			,eng
 			,mat
+			,trunc((kor+eng+mat)/3,2) as avg
 		from
 			student
 	</select>
@@ -67,15 +68,16 @@
 	<select id="selectName" parameterType="string"
 		resultType="studentVo">
 		select
-		id
-		,name
-		,kor
-		,eng
-		,mat
+			id
+			,name
+			,kor
+			,eng
+			,mat
+			,trunc((kor+eng+mat)/3,2) as avg
 		from
-		student
+			student
 		where
-		id = #{id}
+			upper(name) like '%' ||upper(#{name})||'%'
 	</select>
 
 

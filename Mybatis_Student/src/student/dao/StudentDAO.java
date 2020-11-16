@@ -16,10 +16,13 @@ public class StudentDAO {
 	// 학생정보 저장
 	public int insert(Student s) {
 		SqlSession ss = null;
+//		리턴값 설정
 		int count = 0;
 		try {
 			ss = factory.openSession();
+//			studentMapper의 class 형태로 만듬
 			StudentMapper mapper = ss.getMapper(StudentMapper.class);
+//			insert문 실행해서 돌려줄 횟수를 count로 받음
 			count = mapper.insert(s);
 			ss.commit();
 		} catch (Exception e) {
