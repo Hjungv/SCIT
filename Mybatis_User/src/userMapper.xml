@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원 정보 처리 SQL -->
+<mapper namespace="user.dao.UserMapper">
+
+<!-- 회원정보 저장 -->
+<insert id="insertUser" parameterType="userVo">
+insert into
+	userinfo(
+		id
+		,name
+		,gender
+	)values(
+		#{id}
+		,#{name}
+		,#{gender}
+		)
+
+</insert>
+
+
+<!-- 추가정보 저장 -->
+<insert id="insertUserAdd" parameterType="userVo">
+insert into
+	useraddr(
+		id
+		,phone
+		,address
+	) values(
+		#{id}
+		,#{phone}
+		,#{address}
+		)
+
+</insert>
+
+<!-- 전체 회원 목록 -->
+
+<select id="listUser" resultType="userVo">
+
+select
+	i.id as id
+	,i.name as name
+	,i.gender as gender
+	,NVL(a.phone,' ') as phone
+	,NVL(a.address, ' ') as address
+from
+	userinfo i, useraddr a
+where
+	 i.id = a.id(+)
+</select>
+
+</mapper>
