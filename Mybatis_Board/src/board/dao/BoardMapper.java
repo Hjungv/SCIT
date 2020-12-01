@@ -1,6 +1,7 @@
 package board.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import board.vo.Board;
 
@@ -19,5 +20,5 @@ public interface BoardMapper {
 	// 글 삭제
 	public int deleteBoard(int boardnum);
 	// 글 검색
-	public ArrayList<Board> searchBoard(String title);
+	public ArrayList<Board> searchBoard(HashMap<String, Object> param);
 }

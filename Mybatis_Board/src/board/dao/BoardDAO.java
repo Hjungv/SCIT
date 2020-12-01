@@ -1,6 +1,7 @@
 package board.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -89,13 +90,13 @@ public class BoardDAO {
 	}
 
 	// ±Û °Ë»ö
-	public ArrayList<Board> searchBoard(String title) {
+	public ArrayList<Board> searchBoard(HashMap<String, Object> param) {
 		ArrayList<Board> list = null;
 		SqlSession ss = null;
 		try {
 			ss = factory.openSession();
 			BoardMapper mapper = ss.getMapper(BoardMapper.class);
-			list = mapper.searchBoard(title);
+			list = mapper.searchBoard(param);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

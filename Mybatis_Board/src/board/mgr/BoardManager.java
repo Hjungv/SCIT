@@ -1,6 +1,7 @@
 package board.mgr;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import board.dao.BoardDAO;
 import board.vo.Board;
@@ -47,10 +48,13 @@ public class BoardManager {
 	}
 
 	//글 검색
-	public ArrayList<Board> searchBoard(String title) {
-		ArrayList<Board> list = new ArrayList<Board>();
-				list = dao.searchBoard(title);
-		return list;
+	public ArrayList<Board> searchBoard(int col, String title) {
+		HashMap<String, Object>  param = new HashMap<String, Object>();
+		// 두개의 매개변수를 param 에 넣음
+		param.put("col", col);
+		param.put("title", title);
+		return dao.searchBoard(param);
+
 
 
 	}

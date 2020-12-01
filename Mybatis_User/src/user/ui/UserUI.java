@@ -18,6 +18,10 @@ public class UserUI {
 	 */
 	public UserUI() {
 
+		startUserUi();
+	}
+
+	private void startUserUi() {
 		while (true) {
 			printMainMenu();
 			int menu = sc.nextInt();
@@ -28,11 +32,11 @@ public class UserUI {
 			} else if (menu == 2) {
 				list();
 
-			} else if(menu == 9) {
+			} else if (menu == 9) {
 				// 프로그램 종료
 				System.out.println("프로그램을 종료합니다.");
 				System.exit(0);
-			}else {
+			} else {
 				System.out.println("번호를 다시 선택하세요.");
 			}
 		}
@@ -65,10 +69,15 @@ public class UserUI {
 		String name = sc.nextLine();
 		System.out.print("성별 (남:M 여:F ) 입력 : ");
 		String gender = sc.nextLine();
-
+		gender = gender.toUpperCase();
 		user.setId(id);
 		user.setName(name);
-		user.setGender(gender.toUpperCase());
+
+		if (gender.equals("M") || gender.equals("F")) {
+			user.setGender(gender);
+		} else {
+			user.setGender("");
+		}
 
 		System.out.println("추가 정보를 입력하시겠습니까?");
 		String addInfo = sc.nextLine();
@@ -98,8 +107,8 @@ public class UserUI {
 	 */
 	void list() {
 		System.out.println("[ 전체 회원 목록 ]");
-		ArrayList<User> list = mgr.listUser();
-
+		ArrayList<User> list = new ArrayList<User>();
+		list = mgr.listUser();
 		if (list.size() != 0) {
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println(list.get(i));

@@ -156,11 +156,24 @@ public class BoardUI {
 	void search() {
 		sc.nextLine();
 		System.out.println("[ 글검색 ]");
-		System.out.print("* 제목을 입력해주세요 > ");
-		String title = sc.nextLine();
+		String title = null;
+		int col = 0;
+
+		try {
+			System.out.print("검색항목을 선택 해 주세요 (1. 제목 2. 작성자 3. 내용 ) > ");
+			col = sc.nextInt();
+			System.out.print("* 검색어를 입력해주세요 > ");
+			sc.nextLine();
+			title = sc.nextLine();
+
+		} catch (Exception e) {
+			sc.nextLine();
+			System.out.println("잘못 입력했습니다.");
+			return;
+		}
 
 		ArrayList<Board> list = new ArrayList<Board>();
-		list = mgr.searchBoard(title);
+		list = mgr.searchBoard(col, title);
 
 		if (list.size() > 0) {
 			for (int i = 0; i < list.size(); i++) {

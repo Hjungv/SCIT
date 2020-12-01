@@ -16,7 +16,7 @@ insert into
 	)values(
 		#{id}
 		,#{name}
-		,#{gender}
+		,DECODE(#{gender}, null, 'M', #{gender})
 		)
 
 </insert>

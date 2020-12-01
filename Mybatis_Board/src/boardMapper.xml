@@ -44,9 +44,10 @@ order by
 		boardnum
 		,name
     	,hits
-    	,indate
+    	,(to_char(indate, 'yyyy/mm/dd')) indate
     	,title
    		,content
+
 	from
     	board
 	where
@@ -77,15 +78,27 @@ where
 </delete>
 
 <!-- 글 검색 -->
-<select id="searchBoard" parameterType="String" resultType="boardVo">
+<select id="searchBoard" parameterType="hashmap" resultType="boardVo">
 select
     boardnum
     ,name
     ,title
 from
     board
-where
-    upper (title) LIKE '%' || upper(#{title}) || '%'
+<where>
+	<if test="col == 1">
+		AND upper (title) LIKE '%' || upper(#{title}) || '%'
+	</if>
+	<if test="col == 2">
+		AND upper (name) LIKE '%' || upper(#{title}) || '%'
+	</if>
+	<if test="col == 3">
+		AND upper (content) LIKE '%' || upper(#{title}) || '%'
+	</if>
+</where>
+
+order by
+	indate
 
 </select>
 
